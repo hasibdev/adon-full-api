@@ -22,7 +22,12 @@ export default class AuthController {
     return token
   }
 
-  public me({ auth }: HttpContextContract) {
-    return auth.user
+  public async me({ auth }: HttpContextContract) {
+    const user = await User.findOrFail(auth.user?.id)
+    return user
+  }
+
+  public async logout({ auth }: HttpContextContract) {
+    return await auth.logout()
   }
 }

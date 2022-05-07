@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { AdminLoginValidator } from 'App/Validators/AuthValidator'
+import { AdminLoginValidator, AdminChangePassValidator } from 'App/Validators/AuthValidator'
 
 export default class AuthController {
   public async login({ auth, request, response }: HttpContextContract) {
@@ -14,5 +14,15 @@ export default class AuthController {
 
   public me({ auth }: HttpContextContract) {
     return auth.user
+  }
+
+  public async logout({ auth }: HttpContextContract) {
+    return await auth.logout()
+  }
+
+  public async changePassword({ request }: HttpContextContract) {
+    const payload = request.validate(AdminChangePassValidator)
+
+    return payload
   }
 }

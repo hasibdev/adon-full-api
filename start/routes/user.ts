@@ -6,6 +6,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('me', 'UserAuthController.me')
+    Route.post('logout', 'UserAuthController.logout')
 
   }).middleware('auth:user')
 

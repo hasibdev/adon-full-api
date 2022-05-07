@@ -18,6 +18,12 @@ export default class User extends BaseModel {
   @column({ serializeAs: null })
   public password: string
 
+  @column({ serialize: Boolean })
+  public email_confirmed: boolean
+
+  @column({ serialize: Boolean })
+  public blocked: boolean
+
   @column()
   public rememberMeToken?: string
 

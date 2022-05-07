@@ -22,6 +22,26 @@ export class AdminLoginValidator extends BaseValidator {
   }
 }
 
+// Admin Change Password
+export class AdminChangePassValidator extends BaseValidator {
+  constructor(protected ctx: HttpContextContract) {
+    super()
+  }
+
+  public schema = schema.create({
+    current_password: schema.string(),
+    password: schema.string({}, [
+      rules.minLength(6),
+      rules.maxLength(180),
+      rules.confirmed('password_confirmation')
+    ])
+  })
+
+  public messages = {
+    ...this.messages
+  }
+}
+
 // User Login
 export class UserLoginValidator extends BaseValidator {
   constructor(protected ctx: HttpContextContract) {
