@@ -25,6 +25,9 @@ export default class User extends BaseModel {
   public blocked: boolean
 
   @column()
+  public guard?: string
+
+  @column()
   public rememberMeToken?: string
 
   @column.dateTime({ autoCreate: true })

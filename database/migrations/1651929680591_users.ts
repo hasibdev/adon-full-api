@@ -12,6 +12,7 @@ export default class UsersSchema extends BaseSchema {
       table.string('password', 180).notNullable()
       table.boolean('email_confirmed').defaultTo(false)
       table.boolean('blocked').defaultTo(false)
+      table.string('guard', 15).defaultTo('user')
       table.string('remember_me_token').nullable()
 
       /**

@@ -16,6 +16,9 @@ export default class Admin extends BaseModel {
   public password: string
 
   @column()
+  public guard?: string
+
+  @column()
   public rememberMeToken?: string
 
   @column.dateTime({ autoCreate: true })

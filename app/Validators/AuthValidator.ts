@@ -22,8 +22,8 @@ export class AdminLoginValidator extends BaseValidator {
   }
 }
 
-// Admin Change Password
-export class AdminChangePassValidator extends BaseValidator {
+// Change Password
+export class ChangePassValidator extends BaseValidator {
   constructor(protected ctx: HttpContextContract) {
     super()
   }

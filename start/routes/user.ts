@@ -7,6 +7,7 @@ Route.group(() => {
   Route.group(() => {
     Route.get('me', 'UserAuthController.me')
     Route.post('logout', 'UserAuthController.logout')
+    Route.put('change-password', 'UserAuthController.changePassword')
 
   }).middleware('auth:user')
 
