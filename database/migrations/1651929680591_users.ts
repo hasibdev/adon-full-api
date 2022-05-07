@@ -10,7 +10,10 @@ export default class UsersSchema extends BaseSchema {
       table.string('last_name', 50).notNullable()
       table.string('email', 255).notNullable()
       table.string('password', 180).notNullable()
-      table.boolean('email_confirmed').defaultTo(false)
+
+      table.boolean('email_verified').defaultTo(false)
+      table.timestamp('email_verified_at', { useTz: true }).nullable()
+
       table.boolean('blocked').defaultTo(false)
       table.string('guard', 15).defaultTo('user')
       table.string('remember_me_token').nullable()

@@ -10,8 +10,11 @@ export default class Admins extends BaseSchema {
       table.string('name', 100).notNullable()
       table.string('email', 255).notNullable()
       table.string('password', 180).notNullable()
-      table.string('guard', 15).defaultTo('admin')
 
+      table.boolean('email_verified').defaultTo(false)
+      table.timestamp('email_verified_at', { useTz: true }).nullable()
+
+      table.string('guard', 15).defaultTo('admin')
       table.string('remember_me_token').nullable()
 
       /**
