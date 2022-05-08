@@ -1,12 +1,12 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
-  Route.post('login', 'AdminAuthController.login')
+  Route.post('login', 'AdminController.login')
 
   Route.group(() => {
-    Route.get('me', 'AdminAuthController.me')
-    Route.post('logout', 'AdminAuthController.logout')
-    Route.put('change-password', 'AdminAuthController.changePassword')
+    Route.get('me', 'AdminController.me')
+    Route.post('logout', 'AdminController.logout')
+    Route.put('change-password', 'AdminController.changePassword')
 
   }).middleware('auth:admin')
 

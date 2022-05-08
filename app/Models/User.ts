@@ -19,7 +19,10 @@ export default class User extends BaseModel {
   public password: string
 
   @column({ serialize: Boolean })
-  public email_confirmed: boolean
+  public email_verified: boolean
+
+  @column.dateTime()
+  email_verified_at: DateTime
 
   @column({ serialize: Boolean })
   public blocked: boolean
