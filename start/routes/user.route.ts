@@ -8,8 +8,7 @@ Route.group(() => {
     Route.get('me', 'UserController.me')
     Route.post('logout', 'UserController.logout')
     Route.put('change-password', 'UserController.changePassword')
-
-    Route.resource('', '')
+    Route.put('update-profile', 'UserController.updateProfile')
 
   }).middleware('auth:user')
 
