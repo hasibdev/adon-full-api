@@ -9,16 +9,12 @@ export class UserLoginValidator extends BaseValidator {
   }
 
   public schema = schema.create({
-    email: schema.string({}, [
-      rules.email()
-    ]),
-    password: schema.string({}, [
-      rules.minLength(6),
-    ])
+    email: schema.string({}, [rules.email()]),
+    password: schema.string({}, [rules.minLength(6)]),
   })
 
   public messages = {
-    ...this.messages
+    ...this.messages,
   }
 }
 
@@ -29,25 +25,21 @@ export class UserRegisterValidator extends BaseValidator {
   }
 
   public schema = schema.create({
-    first_name: schema.string({}, [
-      rules.maxLength(50)
-    ]),
-    last_name: schema.string({}, [
-      rules.maxLength(50)
-    ]),
+    first_name: schema.string({}, [rules.maxLength(50)]),
+    last_name: schema.string({}, [rules.maxLength(50)]),
     email: schema.string({}, [
       rules.email(),
-      rules.unique({ table: 'users', column: 'email', caseInsensitive: true })
+      rules.unique({ table: 'users', column: 'email', caseInsensitive: true }),
     ]),
     password: schema.string({}, [
       rules.minLength(6),
       rules.maxLength(180),
-      rules.confirmed('password_confirmation')
-    ])
+      rules.confirmed('password_confirmation'),
+    ]),
   })
 
   public messages = {
-    ...this.messages
+    ...this.messages,
   }
 }
 
@@ -62,13 +54,26 @@ export class ChangePassValidator extends BaseValidator {
     password: schema.string({}, [
       rules.minLength(6),
       rules.maxLength(180),
-      rules.confirmed('password_confirmation')
-    ])
+      rules.confirmed('password_confirmation'),
+    ]),
   })
 
   public messages = {
-    ...this.messages
+    ...this.messages,
   }
 }
 
+export class UpdateProfileValidator extends BaseValidator {
+  constructor(protected ctx: HttpContextContract) {
+    super()
+  }
 
+  public schema = schema.create({
+    first_name: schema.string({}, [rules.maxLength(50)]),
+    last_name: schema.string({}, [rules.maxLength(50)]),
+  })
+
+  public messages = {
+    ...this.messages,
+  }
+}

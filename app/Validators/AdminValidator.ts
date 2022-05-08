@@ -42,3 +42,16 @@ export class ChangePassValidator extends BaseValidator {
   }
 }
 
+export class UpdateProfileValidator extends BaseValidator {
+  constructor(protected ctx: HttpContextContract) {
+    super()
+  }
+
+  public schema = schema.create({
+    name: schema.string({}, [rules.maxLength(50)]),
+  })
+
+  public messages = {
+    ...this.messages,
+  }
+}

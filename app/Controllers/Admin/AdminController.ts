@@ -1,7 +1,9 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { AdminLoginValidator, ChangePassValidator } from 'App/Validators/AdminValidator'
+import { AdminLoginValidator, ChangePassValidator, UpdateProfileValidator } from 'App/Validators/AdminValidator'
 
 export default class AuthController {
+  // Login
+  // @return token
   public async login({ auth, request, response }: HttpContextContract) {
     const payload = await request.validate(AdminLoginValidator)
     try {
@@ -12,14 +14,20 @@ export default class AuthController {
     }
   }
 
+  // User Profile
+  // @return loggedin User data
   public me({ auth }: HttpContextContract) {
     return auth.user
   }
 
+  // Logout
+  // @return void
   public async logout({ auth }: HttpContextContract) {
     return await auth.logout()
   }
 
+  // Change Passowrd
+  // @return success message
   public async changePassword({ request, response, auth }: HttpContextContract) {
     const payload = await request.validate(ChangePassValidator)
 
@@ -28,10 +36,18 @@ export default class AuthController {
       user.password = payload.password
       user.save()
 
-      return user
+      return response.json({ message: 'Successfully changed password.' })
     } catch (error) {
-      return response.status(400).json({ ...error, message: "Current Password is wrong" })
+      return response.status(400).json({ ...error, message: 'Current Password is wrong' })
     }
+  }
 
+  // Update Profile
+  // @return Updated user data
+  public async updateProfile({ request, auth }: HttpContextContract) {
+    const payload = await request.validate(UpdateProfileValidator)
+    const user = await auth.user?.merge(payload).save()
+
+    return user
   }
 }

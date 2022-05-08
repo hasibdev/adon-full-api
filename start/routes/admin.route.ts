@@ -7,6 +7,7 @@ Route.group(() => {
     Route.get('me', 'AdminController.me')
     Route.post('logout', 'AdminController.logout')
     Route.put('change-password', 'AdminController.changePassword')
+    Route.put('update-profile', 'AdminController.updateProfile')
 
   }).middleware('auth:admin')
 
