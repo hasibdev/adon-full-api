@@ -18,6 +18,9 @@ export default class User extends BaseModel {
   @column({ serializeAs: null })
   public password: string
 
+  @column()
+  public avatar: string
+
   @column({ serialize: Boolean })
   public email_verified: boolean
 

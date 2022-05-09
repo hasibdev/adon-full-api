@@ -16,6 +16,9 @@ export default class Admin extends BaseModel {
   public password: string
 
   @column()
+  public avatar: string
+
+  @column()
   public guard?: string
 
   @column()
