@@ -9,9 +9,8 @@ Route.group(() => {
     Route.post('logout', 'UserController.logout')
     Route.put('change-password', 'UserController.changePassword')
     Route.put('update-profile', 'UserController.updateProfile')
-
+    Route.put('update-avatar', 'UserController.updateAvatar')
   }).middleware('auth:user')
-
 })
   .prefix('user')
   .namespace('App/Controllers/User')

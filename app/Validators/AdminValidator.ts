@@ -9,16 +9,12 @@ export class AdminLoginValidator extends BaseValidator {
   }
 
   public schema = schema.create({
-    email: schema.string({}, [
-      rules.email()
-    ]),
-    password: schema.string({}, [
-      rules.minLength(6)
-    ])
+    email: schema.string({}, [rules.email()]),
+    password: schema.string({}, [rules.minLength(6)]),
   })
 
   public messages = {
-    ...this.messages
+    ...this.messages,
   }
 }
 
@@ -33,12 +29,12 @@ export class ChangePassValidator extends BaseValidator {
     password: schema.string({}, [
       rules.minLength(6),
       rules.maxLength(180),
-      rules.confirmed('password_confirmation')
-    ])
+      rules.confirmed('password_confirmation'),
+    ]),
   })
 
   public messages = {
-    ...this.messages
+    ...this.messages,
   }
 }
 

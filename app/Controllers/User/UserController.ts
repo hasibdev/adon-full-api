@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import {
   ChangePassValidator,
   UpdateProfileValidator,
@@ -66,5 +67,14 @@ export default class AuthController {
     const user = await auth.user?.merge(payload).save()
 
     return user
+  }
+
+  // Update Avatar
+  // @return Updated avatar Url
+  public async updateAvatar({ request, auth }: HttpContextContract) {
+    // const validationSchema = schema.create({})
+    // const payload = await request.validate(validationSchema)
+
+    return payload
   }
 }
